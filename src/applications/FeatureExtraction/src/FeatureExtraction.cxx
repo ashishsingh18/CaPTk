@@ -302,11 +302,11 @@ int main(int argc, char** argv)
   if (parser.isPresent("i"))
   {
     parser.getParameterValue("i", image_path_string);
-    if (cbica::isDir(image_path_string))
-    {
-      std::cerr << "Images cannot handle a directory input, please use absolute paths.\n";
-      exit(EXIT_FAILURE);
-    }
+    //if (cbica::isDir(image_path_string))
+    //{
+    //  std::cerr << "Images cannot handle a directory input, please use absolute paths.\n";
+    //  exit(EXIT_FAILURE);
+    //}
     image_paths = splitTheString(image_path_string);
   }
 
