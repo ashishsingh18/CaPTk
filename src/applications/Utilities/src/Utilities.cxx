@@ -929,6 +929,8 @@ int main(int argc, char** argv)
   else if (parser.isPresent("rb"))
   {
 	  requestedAlgorithm = ReorientBvec;
+
+	  //check if input bvec file is present
 	  if(parser.isPresent("bvec"))
 		parser.getParameterValue("bvec", bvecFile); // in this case, it is the DICOM reference file	
 	  else
@@ -936,7 +938,15 @@ int main(int argc, char** argv)
 		  std::cerr << "ReorientBvec requested but the input bvec file was not found. Please use the '-bvec' parameter.\n";
 		  return EXIT_FAILURE;
 	  }
-	  parser.getParameterValue("axis", reorientAxis);
+
+	  //check if reorientation axis was provided
+	  if(parser.isPresent("axis"))
+		parser.getParameterValue("axis", reorientAxis);
+	  else
+	  {
+		  std::cerr << "ReorientBvec requested but the reorientation axis was not found. Please use the '-axis' parameter.\n";
+		  return EXIT_FAILURE;
+	  }
   }
   else if (parser.isPresent("ds"))
   {
