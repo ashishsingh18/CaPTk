@@ -48,7 +48,8 @@ enum AvailableAlgorithms
   ImageStack2Join,
   JoinedImage2Stack,
   LabelSimilarity,
-  Hausdorff
+  Hausdorff,
+  ReorientBvec
 };
 
 int requestedAlgorithm = 0;
@@ -62,6 +63,7 @@ std::string changeOldValues, changeNewValues, resamplingResolution_full = "1.0,1
 float resamplingResolution = 1.0, thresholdAbove = 0.0, thresholdBelow = 0.0, thresholdOutsideValue = 0.0, thresholdInsideValue = 1.0;
 float imageStack2JoinSpacing = 1.0;
 int joinedImage2stackedAxis;
+std::string bvecFile, reorientAxis;
 
 bool uniqueValsSort = true, boundingBoxIsotropic = true;
 
@@ -923,6 +925,12 @@ int main(int argc, char** argv)
     requestedAlgorithm = Nifti2Dicom;
     parser.getParameterValue("n2d", targetImageFile); // in this case, it is the DICOM reference file
     parser.getParameterValue("o", outputImageFile);
+  }
+  else if (parser.isPresent("rb"))
+  {
+	  requestedAlgorithm = ReorientBvec;
+	  parser.getParameterValue("bvec", bvecFile); // in this case, it is the DICOM reference file
+	  parser.getParameterValue("axis", reorientAxis);
   }
   else if (parser.isPresent("ds"))
   {
