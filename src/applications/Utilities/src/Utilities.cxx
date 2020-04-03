@@ -848,6 +848,9 @@ int main(int argc, char** argv)
   parser.addOptionalParameter("e2j", "extracted2joined", cbica::Parameter::FLOAT, "0-10", "The spacing in the new direction", "Pass the folder containing all images in '-i'");
   parser.addOptionalParameter("ls", "labelSimilarity", cbica::Parameter::FILE, "NIfTI Reference", "Calculate similarity measures for 2 label maps", "Pass the reference map after '-ls' and the comparison will be done with '-i'", "For images with more than 2 labels, individual label stats are also presented");
   parser.addOptionalParameter("hd", "hausdorffDist", cbica::Parameter::FILE, "NIfTI Reference", "Calculate the Hausdorff Distance for the input image and", "the one passed after '-hd'");
+  parser.addOptionalParameter("rb", "reorientBVec", cbica::Parameter::FILE, "bvec file", "Reorient bvec file around specified axis");
+  parser.addOptionalParameter("bvec", "bvecFile", cbica::Parameter::FILE, "bvec file", "bvec file that needs to be reoriented");
+  parser.addOptionalParameter("axis", "orientationAxis", cbica::Parameter::STRING, "desired orientation axis", "Axis around which reorientation is needed");
 
   parser.addExampleUsage("-i C:/test.nii.gz -o C:/test_int.nii.gz -c int", "Cast an image pixel-by-pixel to a signed integer");
   parser.addExampleUsage("-i C:/test.nii.gz -o C:/test_75.nii.gz -r 75 -ri linear", "Resize an image by 75% using linear interpolation");
