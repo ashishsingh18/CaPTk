@@ -719,6 +719,7 @@ int algorithmsRunner()
   }
   else if (requestedAlgorithm == ReorientBvec)
   {
+  // this code is based on python script: bvec_flip_dir.py
   int direction_row = -1;
   if (reorientAxis == "x" || reorientAxis == "X")
   {
@@ -734,6 +735,10 @@ int algorithmsRunner()
   }
   else
 	  std::cerr << " Bvec reorientation error: The reorientation axis you entered is invalid. Please enter 'x','y' or 'z' for reorientation axis.";
+
+  //todo
+  //read bvec file
+  // flip the sign based on direction row
   }
 
   // if no other algorithm has been selected and mask & output files are present and in same space as input, apply it
