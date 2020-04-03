@@ -717,6 +717,24 @@ int algorithmsRunner()
 
     std::cout << "Hausdorff Distance: " << filter->GetHausdorffDistance() << "\n";
   }
+  else if (requestedAlgorithm == ReorientBvec)
+  {
+  int direction_row = -1;
+  if (reorientAxis == "x" || reorientAxis == "X")
+  {
+	  direction_row = 0;
+  }
+  if (reorientAxis == "y" || reorientAxis == "Y")
+  {
+	  direction_row = 1;
+  }
+  if (reorientAxis == "z" || reorientAxis == "Z")
+  {
+	  direction_row = 2;
+  }
+  else
+	  std::cerr << " Bvec reorientation error: The reorientation axis you entered is invalid. Please enter 'x','y' or 'z' for reorientation axis.";
+  }
 
   // if no other algorithm has been selected and mask & output files are present and in same space as input, apply it
   else if (cbica::isFile(inputMaskFile) && !outputImageFile.empty())
