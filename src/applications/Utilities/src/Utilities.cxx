@@ -1412,6 +1412,9 @@ int main(int argc, char** argv)
       regionIndex[2] = 0;
       regionIndex[3] = 0;
 
+	  std::cout << " input image prop = " << std::endl;
+	  inputImage->Print(std::cout);
+
       std::vector<ImageType::Pointer> OnePatientperfusionImages;
 
       auto joinFilter = itk::JoinSeriesImageFilter< OrientationImageType, ImageType >::New();
